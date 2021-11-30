@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_200153) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.boolean "featured"
+    t.boolean "featured", default: false
     t.string "title"
     t.string "url"
     t.string "imageUrl"
