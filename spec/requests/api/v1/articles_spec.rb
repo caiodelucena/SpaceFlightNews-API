@@ -12,8 +12,8 @@ RSpec.describe 'Articles', type: :request do
 
     context 'when there are articles' do
       before do
-        FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false)
-        FactoryBot.create(:article, title: 'NASA calls off spacewalk due to possible risk of space debris', newsSite: 'SpaceNews', featured: false)
+        FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
+        FactoryBot.create(:article, title: 'NASA calls off spacewalk due to possible risk of space debris', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
       end
 
       it 'returns 2 items' do
@@ -54,7 +54,7 @@ RSpec.describe 'Articles', type: :request do
 
   describe 'GET show' do
     before do
-      @article_show = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false)
+      @article_show = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
     end
 
     it 'renders a successful response' do
@@ -93,7 +93,7 @@ RSpec.describe 'Articles', type: :request do
   describe 'PATCH update' do
     context 'with valid parameters' do
       before do
-        @article_update = FactoryBot.create(:article, title: 'NASA calls off spacewalk due to possible risk of space debris', newsSite: 'SpaceNews', featured: false)
+        @article_update = FactoryBot.create(:article, title: 'NASA calls off spacewalk due to possible risk of space debris', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
       end
 
       it 'update a post' do
@@ -124,7 +124,7 @@ RSpec.describe 'Articles', type: :request do
 
     context 'with invalid parameters' do
       before do
-        @article_update_err = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false)
+        @article_update_err = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
       end
       it 'renders a JSON response with errors' do
         patch "/api/v1/articles/#{@article_update_err.id}",
@@ -136,7 +136,7 @@ RSpec.describe 'Articles', type: :request do
 
   describe 'DELETE destroy' do
     before do
-      @article_to_destroy = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false)
+      @article_to_destroy = FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
     end
     
     it 'destroys the requested article' do
