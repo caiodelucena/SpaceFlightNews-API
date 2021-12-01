@@ -1,10 +1,13 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
+      include Paginable
+
       before_action :set_article, only: [:show, :update, :destroy]
 
       def index
-        render json: Article.all
+        @articles = Article.page(current_page).per(per_page)
+        render :json =>  {:articles => @articles, :meta => meta_attributes(@articles)}
       end 
 
       def show
