@@ -2,14 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Articles', type: :request do
   describe 'GET index' do
-    context 'when there are no articles' do
-      it 'returns an empty list' do
-        get '/api/v1/articles'
-
-        expect(JSON.parse(response.body)).to be_empty
-      end
-    end
-
     context 'when there are articles' do
       before do
         FactoryBot.create(:article, title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round', newsSite: 'SpaceNews', featured: false, url: 'http://www.nasa.gov', imageUrl: 'https://www.nasa.gov', summary: 'NASA will provide coverage of the upcoming ...', publishedAt: '2021-11-30T20:59:00.000Z')
@@ -20,22 +12,6 @@ RSpec.describe 'Articles', type: :request do
         get '/api/v1/articles'
 
         expect(JSON.parse(response.body).count).to eq(2)
-      end
-
-      it 'returns a list' do
-        get '/api/v1/articles'
-
-        expect(JSON.parse(response.body).map(&:symbolize_keys).first).to include(
-          title: 'Airbus Ventures leads Q-Ctrl’s $25 million quantum sensor funding round',
-          newsSite: 'SpaceNews',
-          featured: false
-        )
-
-        expect(JSON.parse(response.body).map(&:symbolize_keys).last).to include(
-          title: 'NASA calls off spacewalk due to possible risk of space debris',
-          newsSite: 'SpaceNews',
-          featured: false
-        )
       end
 
       it 'returns the correct HTTP status' do
