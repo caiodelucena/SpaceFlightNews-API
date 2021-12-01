@@ -1,7 +1,9 @@
 # Back-end Challenge 🏅 2021 - Space Flight News
 
-### Construction of an API to import Space Flight News articles
+## Description:
+ - Construction of an API to import Space Flight News articles
 
+##
 <table>
   <tr>
     <td>Ruby version</td>
