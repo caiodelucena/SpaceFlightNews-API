@@ -1,12 +1,6 @@
 # Back-end Challenge 🏅 2021 - Space Flight News
 
-## Description:
- - Construction of an API to import Space Flight News articles
-
-
-
-
-##
+## - Stacks:
 <table>
   <tr>
     <td>Ruby version</td>
@@ -28,8 +22,16 @@
   </tr>
 </table>
 
+## - Description:
+ - Construction of an API to import Space Flight News articles
 
-## Initial settings to run the project
+
+- To feed your database you must create a script to store the data for all articles in the Space Flight News API.
+
+- Develop a CRON to run daily at 9am and store in its the new articles to your database. 
+
+
+##  - Initial settings to run the project:
 
 ```bash
 # clone the project
@@ -51,21 +53,22 @@ rails db:migrate
 rails s
 ```
 
-The backend is available at `http://localhost:3000` to use in your local machine or [Heroku](https://space-news-api.herokuapp.com/)
+The backend is available at `http://localhost:3000` to use in your local machine.
 
-## Import Data
+## - Import Data:
 
 ```bash
-# This rake task will import data from the Space Flight News API
+# This script will perform the data import from the Space Flight News API
+  rails c
 
-  rake create_db:sync
+# Inside the Rails Console, Run: 
+  Articles::ImportJob.perform_now
 ```
-## Tests
+## - Tests:
 
 To run the tests:
 
 ```bash
-
 # All tests
   rspec
 ```
@@ -80,21 +83,18 @@ To run the tests:
   rspec spec/models/article_spec.rb
 ```
 
-### API Endpoint
+## - API Endpoint: 
 
-The following endpoints are available:
-####  ° Articles 
+- The following endpoints are available:
+
 | Endpoints                   | Usage                                     | 
 | --------------------------- | ----------------------------------------- | 
 | `GET /`                      | Index message
 | `GET /api/v1/articles`           | Get all of the articles.                    |
 | `GET /api/v1/articles/:id`       | Get the details of a single article        |
+| `GET /api/v1/articles?page=<number_of_page>`       | Get the specific articles page         |
 | `POST /api/v1/articles`          | Create an article.                           | 
 | `PATCH /api/v1/articles/:id`       | Edit the details of an existing article.     | 
 | `DELETE /api/v1/articles/:id`    | Remove the article.                      |  
                    
 
-
-
-
->  This is a challenge by [Coodesh](https://coodesh.com/)
