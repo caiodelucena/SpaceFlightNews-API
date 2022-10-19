@@ -1,0 +1,4 @@
+:schedule:
+  import_articles:
+    cron: '0 9 * * *'
+    class: Articles::ImportJob
